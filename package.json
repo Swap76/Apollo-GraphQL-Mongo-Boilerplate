@@ -1,0 +1,19 @@
+{
+  "name": "apollo-graphql-mongo-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swap76/Apollo-GraphQL-Mongo-Boilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Swap76/Apollo-GraphQL-Mongo-Boilerplate/issues"
+  },
+  "homepage": "https://github.com/Swap76/Apollo-GraphQL-Mongo-Boilerplate#readme"
+}
