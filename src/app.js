@@ -1,0 +1,69 @@
+import '@babel/polyfill';
+import express from 'express';
+import errorHandler from 'errorhandler';
+import * as moment from 'moment';
+import Raven from 'raven';
+import initMiddleware from './config/middleware';
+import initDatabase from './config/database';
+import initLogBackup from './config/log_backup';
+import initDBBackup from './config/database_backup';
+import initRoutes from './routes/index';
+import jwtAuth from './middlewear/jwtAuth';
+import { ApolloServer } from 'apollo-server-express';
+import index from './graphql/schema/index';
+import Auth from './graphql/schema/Auth';
+import Blog from './graphql/schema/Blog';
+import Comment from './graphql/schema/Comment';
+import Contest from './graphql/schema/Contest';
+import Problem from './graphql/schema/Problem';
+import Submission from './graphql/schema/Submission';
+import User from './graphql/schema/User';
+import Feedback from './graphql/schema/Feedback';
+import Main from './graphql/schema/Main';
+import Ratings from './graphql/schema/Ratings';
+import App from './graphql/schema/App';
+import graphqlResolver from './graphql/resolvers/index';
+import Debug from 'debug';
+const debug = Debug('arena:app');
+
+const app = express();
+
+// Moment JS
+app.locals.moment = moment;
+
+app.use(errorHandler());
+
+// Sentry
+Raven.config(process.env.SENTRY_DSN).install();
+app.use(Raven.requestHandler());
+
+// Middleware
+initMiddleware(app);
+
+// Database
+initDatabase();
+
+// Log Backup
+initLogBackup();
+
+// DB Backup
+initDBBackup();
+
+// REST API Routes
+initRoutes(app);
+
+// Configuring typeDefs & resolvers
+const graphql = new ApolloServer({
+	typeDefs: [index,Auth,Blog,Comment,Contest,Ratings,Problem,Submission,User,Feedback,Main,App],
+	resolvers: graphqlResolver,
+	context: async (req) => ({
+		data: await jwtAuth(req)
+	})
+
+});
+
+graphql.applyMiddleware({ app, path: '/graphql' });
+
+const server = app.listen(process.env.PORT || '3000', () => debug(`Server running on port ${process.env.PORT || 4000}`)); 
+
+export default server;
