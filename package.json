@@ -4,7 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production node start.js",
+    "dev": "NODE_ENV=dev nodemon start.js",
+    "lint": "eslint . --ext .js",
+    "fix": "eslint . --fix --ext .js && git add ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
   },
   "repository": {
     "type": "git",
@@ -15,5 +24,17 @@
   "bugs": {
     "url": "https://github.com/Swap76/Apollo-GraphQL-Mongo-Boilerplate/issues"
   },
-  "homepage": "https://github.com/Swap76/Apollo-GraphQL-Mongo-Boilerplate#readme"
+  "homepage": "https://github.com/Swap76/Apollo-GraphQL-Mongo-Boilerplate#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/register": "^7.7.7",
+    "babel-eslint": "^8.2.6",
+    "errorhandler": "^1.5.1",
+    "eslint": "^4.19.1",
+    "husky": "^3.0.9",
+    "nodemon": "^1.19.1",
+    "rimraf": "^3.0.0"
+  }
 }
