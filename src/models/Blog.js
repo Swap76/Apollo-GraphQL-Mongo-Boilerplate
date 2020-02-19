@@ -22,24 +22,10 @@ const blog = new blogSchema ({
 		text: true,
 		maxlength: 65536,
 	},
-	upvote: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		unique: true,
-	}],
-	downvote: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		unique: true,
-	}],
 	tags: [{
 		type: String,
 		text: true,
 	}],
-	pinned: {
-		type: Boolean,
-		default: false,
-	},
 }, {
 	timestamps: true,
 });

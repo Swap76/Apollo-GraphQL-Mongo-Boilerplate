@@ -7,10 +7,7 @@ const typeDefs =  gql `
     userId: User!
     title: String!
     content: String!
-    upvote: [String]!
-    downvote: [String]!
     tags: [String]!
-    pinned: Boolean!
   }
 
   type singleBlog {
@@ -18,13 +15,10 @@ const typeDefs =  gql `
     comments: [Comment]!
   }
 
-  input BlogWhereInput {
-    pinned: Boolean
-  }
 
   extend type Query {
     blogById(_id: ID!): singleBlog!
-    blogByUser(userId:String!,where:BlogWhereInput,limit:Int,skip:Int): [Blog]!
+    blogByUser(userId:String!,limit:Int,skip:Int): [Blog]!
   }
 
   extend type Mutation {

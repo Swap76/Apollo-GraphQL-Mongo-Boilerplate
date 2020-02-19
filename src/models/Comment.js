@@ -20,16 +20,6 @@ const comment = new commentSchema ({
 		text: true,
 		maxlength: 2048,
 	},
-	upvote: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		unique: true,
-	}],
-	downvote: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		unique: true,
-	}],
 }, {
 	timestamps: true,
 });

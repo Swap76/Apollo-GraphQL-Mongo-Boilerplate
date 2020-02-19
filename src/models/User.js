@@ -27,26 +27,6 @@ const user = new userSchema({
 		type: String,
 		required: true,
 	},
-	about: {
-		type: String,
-		default: null,
-		text: true,
-	},
-	ratings: {
-		type: Number,
-		default: 0,
-		required: true,
-	},
-	followers: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		unique: true,
-	}],
-	following: [{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		unique: true,
-	}],
 	social: {
 		facebook: {
 			type: String,
@@ -56,18 +36,6 @@ const user = new userSchema({
 		},
 		github: {
 			type: String,
-		},
-	},
-	notifications: {
-		updates: {
-			type: Boolean,
-			required: true,
-			default: true,
-		},
-		activities: {
-			type: Boolean,
-			required: true,
-			default: true,
 		},
 	},
 	otp: {
@@ -85,9 +53,6 @@ const user = new userSchema({
 		enum: ['superuser','developer',null],
 		default: null,
 	},
-	topics: [{
-		type: String,
-	}],
 }, {
 	timestamps: true,
 });

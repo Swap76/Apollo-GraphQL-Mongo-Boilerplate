@@ -23,8 +23,8 @@ export default {
 	blogByUser: async (parent, args) => {
 		let { userId } = args;
 		log.info(`user:${formatter(userId)},action:blog user`);
-		let { data } = filterAndPagination(args.where,args.limit,args.skip);
-		return await Blog.find({userId}).where(data.where).limit(data.limit).skip(data.skip).sort({'updatedAt': -1});
+		let { data } = filterAndPagination({},args.limit,args.skip);
+		return await Blog.find({userId}).limit(data.limit).skip(data.skip).sort({'updatedAt': -1});
 	},
   
 };

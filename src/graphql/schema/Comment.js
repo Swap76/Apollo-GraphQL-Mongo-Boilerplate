@@ -7,8 +7,6 @@ const typeDefs =  gql `
     postId: String!
     userId: User!
     content: String!
-    upvote: [String]!
-    downvote: [String]!
   }
 
   input CommentWhereInput {

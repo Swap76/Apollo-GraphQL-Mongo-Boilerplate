@@ -7,12 +7,6 @@ const typeDefs =  gql `
     name: String!
     email: String!
     username: String!
-    about: String
-    ratings: Int
-    followers: [String]
-    following: [String]
-    topics: [String]
-    notifications: notification!
     verified: Boolean!
     role: String
   }
