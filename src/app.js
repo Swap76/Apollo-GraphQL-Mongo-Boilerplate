@@ -5,8 +5,6 @@ import * as moment from 'moment';
 import Raven from 'raven';
 import initMiddleware from './config/middleware';
 import initDatabase from './config/database';
-import initLogBackup from './config/log_backup';
-import initDBBackup from './config/database_backup';
 import initRoutes from './routes/index';
 import jwtAuth from './middlewear/jwtAuth';
 import { ApolloServer } from 'apollo-server-express';
@@ -14,14 +12,8 @@ import index from './graphql/schema/index';
 import Auth from './graphql/schema/Auth';
 import Blog from './graphql/schema/Blog';
 import Comment from './graphql/schema/Comment';
-import Contest from './graphql/schema/Contest';
-import Problem from './graphql/schema/Problem';
-import Submission from './graphql/schema/Submission';
 import User from './graphql/schema/User';
-import Feedback from './graphql/schema/Feedback';
 import Main from './graphql/schema/Main';
-import Ratings from './graphql/schema/Ratings';
-import App from './graphql/schema/App';
 import graphqlResolver from './graphql/resolvers/index';
 import Debug from 'debug';
 const debug = Debug('arena:app');
@@ -42,12 +34,6 @@ initMiddleware(app);
 
 // Database
 initDatabase();
-
-// Log Backup
-initLogBackup();
-
-// DB Backup
-initDBBackup();
 
 // REST API Routes
 initRoutes(app);
