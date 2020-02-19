@@ -15,7 +15,6 @@ export default {
 			const data = {userId, postId, commentContent:content};
 			const resultfromJoi = checkInput(['userId','postId','commentContent'],data);
 			if(resultfromJoi != true) return resultfromJoi;
-			// @ts-ignore
 			let result = await new Comments({userId,postId,content}).save();
 			if (result) { 
 				log.info(`user:${formatter(userId)},blog:${postId},action:new comment`);
@@ -37,7 +36,6 @@ export default {
 			const ownerOrNot =  await checkOwnerOrSuperUserOfComment(userId,_id);
 			if(resultfromJoi != true) return resultfromJoi ;
 			else if (ownerOrNot != true) return ownerOrNot;
-			// @ts-ignore
 			let result = await Comments.findByIdAndUpdate(_id,{ $set: {userId,content}});
 			if (result) { 
 				log.info(`user:${formatter(userId)},comment:${_id},action:update comment`);
@@ -56,7 +54,6 @@ export default {
 		try {
 			const ownerOrNot =  await checkOwnerOrSuperUserOfComment(userId,_id);
 			if ( ownerOrNot != true ) return ownerOrNot;
-			// @ts-ignore
 			let result = await Comments.findByIdAndRemove(_id);
 			if (result) { 
 				log.info(`user:${formatter(userId)},blog:${result.postId},comment:${_id},action:delete comment`);

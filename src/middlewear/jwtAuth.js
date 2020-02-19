@@ -9,12 +9,6 @@ const jwtAuth = async ({req}) =>  {
 	if (!token || token === '') return { isAuth };
 	let decodedToken;
 	try {
-		// const result = await redisClient.exists(token);
-		// if (result === 1) {
-		// 	console.log('exists');
-		// } else {
-		// 	console.log('doesn\'t exist');
-		// }
 		decodedToken = jwt.verify(token,process.env.JWT_SECRET);
 	} catch (error) {
 		return { isAuth };

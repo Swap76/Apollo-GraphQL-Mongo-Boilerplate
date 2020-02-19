@@ -23,7 +23,6 @@ export default {
 				if(resultfromJoi != true) return resultfromJoi;
 				log.info(`user:${formatter(userId)},action:blog created`);
 				data.tags = data.tags.split(',');
-				// @ts-ignore
 				let result = await new Blog(data).save();
 				if (result) { 
 					return responseFinal('200','New Blog Created Successfully'); 

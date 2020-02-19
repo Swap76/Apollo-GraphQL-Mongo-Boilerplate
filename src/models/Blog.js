@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate';
-// @ts-ignore
 import mongooseAggregatePaginate from 'mongoose-aggregate-paginate';
 
 const blogSchema = mongoose.Schema;

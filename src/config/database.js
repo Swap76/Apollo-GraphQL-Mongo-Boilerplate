@@ -1,7 +1,6 @@
 import Debug from 'debug';
 const debug = Debug('API:database');
 import mongoose from 'mongoose';
-// @ts-ignore
 import cachegoose from 'cachegoose';
 
 const initDatabase = () => {
