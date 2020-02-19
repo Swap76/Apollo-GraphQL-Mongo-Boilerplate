@@ -1,0 +1,681 @@
+{
+	"info": {
+		"_postman_id": "f1f9d4d9-ec10-4835-bf60-a6f1835e738a",
+		"name": "Apollo GraphQL Mongo Boilerplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GraphQL API",
+			"item": [
+				{
+					"name": "Queries",
+					"item": [
+						{
+							"name": "Auth",
+							"item": [
+								{
+									"name": "Login",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query {\n  login(email:\"dsc@siesgst.ac.in\",password:\"vijaya@26\"){\n    userId\n    token\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1NzgwODc2NzksImV4cCI6MTU3ODEzMDg3OX0.bM4RjoGpGVlDyqu0uVnO5QMfk55-WzmqN4kCgyMBgik",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n    logout (userId:\"5b6490e95969e7002076f330\") {\n        code\n        success\n        message\n    }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Users",
+							"item": [
+								{
+									"name": "User by Id",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk2MjYxMDEsImV4cCI6MTU3OTY2OTMwMX0.-k4cKdCJd-Nh-l8baVDKtwSPsCnvNBwsCkUAnf3Hyh0"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query {\n  userById(_id:\"5b6490e95969e7002076f330\"){\n    name\n    about\n    ratings\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Blogs",
+							"item": [
+								{
+									"name": "Blog by Id",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk2MjYxMDEsImV4cCI6MTU3OTY2OTMwMX0.-k4cKdCJd-Nh-l8baVDKtwSPsCnvNBwsCkUAnf3Hyh0"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query {\n  blogById(_id:\"5e4d78459f40d20593119f79\"){\n    blog{\n      _id\n      title\n      tags\n    }\n    comments{\n      content\n    }\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Blog by User",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk2MjYxMDEsImV4cCI6MTU3OTY2OTMwMX0.-k4cKdCJd-Nh-l8baVDKtwSPsCnvNBwsCkUAnf3Hyh0"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query {\n  blogByUser(userId:\"5e4d75cf9f40d20593119f77\"){\n    title\n    content\n    tags\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Comments",
+							"item": [
+								{
+									"name": "All Comments of a post",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk2MjYxMDEsImV4cCI6MTU3OTY2OTMwMX0.-k4cKdCJd-Nh-l8baVDKtwSPsCnvNBwsCkUAnf3Hyh0"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query {\n  comments(where:{postId:\"5e4d78459f40d20593119f79\"}) {\n    _id\n    userId{\n      name\n      username\n    }\n    content\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Comment by ID",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk2MjYxMDEsImV4cCI6MTU3OTY2OTMwMX0.-k4cKdCJd-Nh-l8baVDKtwSPsCnvNBwsCkUAnf3Hyh0"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "query {\n  commentById(_id:\"5e4d7c1a4c0eee07b80a86bb\"){\n    userId{\n      name\n      username\n    }\n    postId\n    content\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Main Blogs Page",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk2MjYxMDEsImV4cCI6MTU3OTY2OTMwMX0.-k4cKdCJd-Nh-l8baVDKtwSPsCnvNBwsCkUAnf3Hyh0"
+									}
+								],
+								"body": {
+									"mode": "graphql",
+									"graphql": {
+										"query": "query {\n  blogs {\n    _id\n    userId {\n      name\n      username\n    }\n\ttitle\n    tags\n  }\n}",
+										"variables": ""
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/graphql",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Mutations",
+					"item": [
+						{
+							"name": "Auth",
+							"item": [
+								{
+									"name": "Sign Up",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk3OTg3MTMsImV4cCI6MTU3OTg0MTkxM30.tPDFw-BvkckGQ04yOtkI8ezzB8fhJMFJz3zhDndeHAU"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  signup(name:\"DSCSIESGST\",username:\"DSC-SIESGST\", email:\"dsc@siesgst.ac.in\", password:\"vijaya@26\"){\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Verify Account",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk3OTg3MTMsImV4cCI6MTU3OTg0MTkxM30.tPDFw-BvkckGQ04yOtkI8ezzB8fhJMFJz3zhDndeHAU"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  verifyUser(userId:\"5e4d75cf9f40d20593119f77\",otp:\"319523\") {\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Password",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk3OTg3MTMsImV4cCI6MTU3OTg0MTkxM30.tPDFw-BvkckGQ04yOtkI8ezzB8fhJMFJz3zhDndeHAU",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  updatePassword(oldPassword:\"vijaya26\",password:\"vijaya@26\"){\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Users",
+							"item": [
+								{
+									"name": "Update Bio of user",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTRkNzVjZjlmNDBkMjA1OTMxMTlmNzciLCJpYXQiOjE1ODIxMzUxMTIsImV4cCI6MTU4MjE3ODMxMn0.wxnomkkjaSEG3ftzniqiLMWFafKnVrwnfkCsrUNZFko"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  updateBio(about:\"DSC Lead\") {\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Blogs",
+							"item": [
+								{
+									"name": "Create Blog",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTRkNzVjZjlmNDBkMjA1OTMxMTlmNzciLCJpYXQiOjE1ODIxMzUxMTIsImV4cCI6MTU4MjE3ODMxMn0.wxnomkkjaSEG3ftzniqiLMWFafKnVrwnfkCsrUNZFko"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  createBlog(title:\"Testing for Apollo Boiler Plate\",content:\"Testing for Apollo Boiler Plate\",tags:\"Boilerplate,Postman\"){\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit Blog",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTRkNzVjZjlmNDBkMjA1OTMxMTlmNzciLCJpYXQiOjE1ODIxMzUxMTIsImV4cCI6MTU4MjE3ODMxMn0.wxnomkkjaSEG3ftzniqiLMWFafKnVrwnfkCsrUNZFko"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  editBlog(_id:\"5e4d78459f40d20593119f79\",title:\"Edit Testing for postman and auth\",content:\"Testing for postman and auth\",tags:\"Test,Postman\"){\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Blog",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk1Mzk0ODMsImV4cCI6MTU3OTU4MjY4M30.kcUy-4tgrfefQ0oWP1bwd7u0R1TGUCe02wKrZxp869g"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  deleteBlog(_id:\"5b783eaee2221500209ac8d7\"){\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Comments",
+							"item": [
+								{
+									"name": "Write Comment",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTRkNzVjZjlmNDBkMjA1OTMxMTlmNzciLCJpYXQiOjE1ODIxMzUxMTIsImV4cCI6MTU4MjE3ODMxMn0.wxnomkkjaSEG3ftzniqiLMWFafKnVrwnfkCsrUNZFko"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  writeComment(postId:\"5e4d78459f40d20593119f79\", content:\"Testing by Swapnil\") {\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Edit Comment",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTRkNzVjZjlmNDBkMjA1OTMxMTlmNzciLCJpYXQiOjE1ODIxMzUxMTIsImV4cCI6MTU4MjE3ODMxMn0.wxnomkkjaSEG3ftzniqiLMWFafKnVrwnfkCsrUNZFko"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  editComment(_id:\"5e4d7c1a4c0eee07b80a86bb\",content:\"Edited by Swapnil\") {\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Comment",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1YjY0OTBlOTU5NjllNzAwMjA3NmYzMzAiLCJpYXQiOjE1Nzk2MjYxMDEsImV4cCI6MTU3OTY2OTMwMX0.-k4cKdCJd-Nh-l8baVDKtwSPsCnvNBwsCkUAnf3Hyh0"
+											}
+										],
+										"body": {
+											"mode": "graphql",
+											"graphql": {
+												"query": "mutation {\n  deleteComment(_id:\"5e4d7c1a4c0eee07b80a86bb\") {\n    code\n    success\n    message\n  }\n}",
+												"variables": ""
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/graphql",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"graphql"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "REST API",
+			"item": [
+				{
+					"name": "Main Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
