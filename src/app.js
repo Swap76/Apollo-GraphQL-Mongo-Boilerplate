@@ -13,7 +13,6 @@ import Auth from './graphql/schema/Auth';
 import Blog from './graphql/schema/Blog';
 import Comment from './graphql/schema/Comment';
 import User from './graphql/schema/User';
-import Main from './graphql/schema/Main';
 import graphqlResolver from './graphql/resolvers/index';
 import Debug from 'debug';
 const debug = Debug('API:app');
