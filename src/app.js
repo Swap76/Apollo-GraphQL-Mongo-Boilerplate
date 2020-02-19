@@ -16,7 +16,7 @@ import User from './graphql/schema/User';
 import Main from './graphql/schema/Main';
 import graphqlResolver from './graphql/resolvers/index';
 import Debug from 'debug';
-const debug = Debug('arena:app');
+const debug = Debug('API:app');
 
 const app = express();
 

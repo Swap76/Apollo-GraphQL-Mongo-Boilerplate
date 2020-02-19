@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { redisClient } from '../config/redis';
+// import { redisClient } from '../config/redis';
 
 const jwtAuth = async ({req}) =>  {
 	const authHeader = req.headers.authorization;

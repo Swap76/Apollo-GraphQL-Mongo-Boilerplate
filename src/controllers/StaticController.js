@@ -1,5 +1,3 @@
-const logger = require('../config/winston');
-
 /**
  * Shows intro page of rest api
  * @route /
