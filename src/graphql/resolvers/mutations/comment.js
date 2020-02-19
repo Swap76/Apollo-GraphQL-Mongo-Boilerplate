@@ -1,9 +1,8 @@
 import Comments from '../../../models/Comment';
-import {  } from '../../../utils/accessControl';
 import checkInput from '../../../utils/joiValidate';
 import log from '../../../config/winston';
 import formatter from '../../../utils/winstonFormatter';
-import { checkOwnerOrSuperUserOfComment, upvoteCommentOrNot, downvoteCommentOrNot } from '../../../utils/checksForComments';
+import { checkOwnerOrSuperUserOfComment } from '../../../utils/checksForComments';
 import responseFinal from '../../../utils/sendResponse';
 
 export default {

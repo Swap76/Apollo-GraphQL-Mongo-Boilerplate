@@ -6,7 +6,6 @@ import { checkForSignUp, checkForExistinguserWithId } from '../../../utils/check
 import checkInput from '../../../utils/joiValidate';
 import log from '../../../config/winston';
 import formatter from '../../../utils/winstonFormatter';
-import { redisClient } from '../../../config/redis';
 import responseFinal from '../../../utils/sendResponse';
 import ResetPassword from '../../../models/ResetPassword';
 
@@ -17,8 +16,6 @@ export default {
 		console.log(context);
 		if (!isAuth) return responseFinal('403','You are not Logged In');
 		try {
-			const result = await redisClient.set([token,'token']);
-			console.log(result);
 			log.info(`user:${formatter(args.userId)},action:logout`);
 			return responseFinal('200','You are logged out.');
 		} catch (error) {

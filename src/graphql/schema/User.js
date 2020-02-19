@@ -39,7 +39,7 @@ const typeDefs =  gql `
     role: Roles
   }
 
-  extend type Query {
+  type Query {
     users(where:UserWhereInput,limit:Int,skip:Int): [User]!
     userById(_id:ID!): User
     profilePage(_id:ID!):profile!
@@ -50,7 +50,7 @@ const typeDefs =  gql `
     blogs: [Blog]
   }
 
-  extend type Mutation {
+  type Mutation {
     updatePassword(oldPassword:String!,password:String!): MutationResponse!
   }
   

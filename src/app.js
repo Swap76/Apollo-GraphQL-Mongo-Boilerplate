@@ -39,7 +39,7 @@ initRoutes(app);
 
 // Configuring typeDefs & resolvers
 const graphql = new ApolloServer({
-	typeDefs: [index,Auth,Blog,Comment,Contest,Ratings,Problem,Submission,User,Feedback,Main,App],
+	typeDefs: [index,Auth,Blog,Comment,User],
 	resolvers: graphqlResolver,
 	context: async (req) => ({
 		data: await jwtAuth(req)
@@ -49,6 +49,6 @@ const graphql = new ApolloServer({
 
 graphql.applyMiddleware({ app, path: '/graphql' });
 
-const server = app.listen(process.env.PORT || '3000', () => debug(`Server running on port ${process.env.PORT || 4000}`)); 
+const server = app.listen(process.env.PORT || '3000', () => debug(`Server running on port ${process.env.PORT || 3000}`)); 
 
 export default server;

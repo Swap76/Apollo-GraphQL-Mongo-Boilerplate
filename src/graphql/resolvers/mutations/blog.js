@@ -3,8 +3,7 @@ import checkInput from '../../../utils/joiValidate';
 import responseFinal from '../../../utils/sendResponse';
 import log from '../../../config/winston';
 import formatter from '../../../utils/winstonFormatter';
-import { checkSuperuser } from '../../../utils/accessControl';
-import { checkOwnerOfBlogOrSuperUser, upvoteBlogOrNot, downvoteBlogOrNot } from '../../../utils/checksForBlogs';
+import { checkOwnerOfBlogOrSuperUser } from '../../../utils/checksForBlogs';
 
 export default {
 
