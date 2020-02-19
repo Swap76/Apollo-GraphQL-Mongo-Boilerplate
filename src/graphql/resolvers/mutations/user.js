@@ -4,6 +4,24 @@ import checkInput from '../../../utils/joiValidate';
 import responseFinal from '../../../utils/sendResponse';
 
 export default {
+	// Update bio
+	updateBio: async (parent, args, context) => {
+		let {about } = args;
+		let result;
+		const data = {about};
+		const resultFromJoi = checkInput(['about'],data);
+		if (resultFromJoi != true) return resultFromJoi;
+		try {
+			let _id = context.data.userId;
+			if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+			result = await User.findOneAndUpdate({_id},{$set:data});
+		} catch (error) {       
+			return responseFinal('422',`${error.message}`);
+		}
+		if (result) {
+			return responseFinal('200','Info Updated Successfully');
+		}
+	},
 
 	// Update password
 	updatePassword: async (parent, args, context) => {

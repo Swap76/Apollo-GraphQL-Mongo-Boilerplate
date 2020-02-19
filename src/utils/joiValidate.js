@@ -15,6 +15,7 @@ let checkInput = (checks, data) => {
 		password: Joi.string().required().min(4).max(256),
 		name: Joi.string().required().min(4).max(32).trim(),
 		username: Joi.string().required().min(4).max(32).trim(),
+		about: Joi.string().required().min(4).max(32).trim(),
 		otp: Joi.string().required().min(6).max(6).trim(),
 		anyEmail: Joi.string().required().email().min(8).max(64).trim(),
 		message: Joi.string().required().min(8).max(512).trim(),

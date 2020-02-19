@@ -7,6 +7,7 @@ const typeDefs =  gql `
     name: String!
     email: String!
     username: String!
+    about: String
     verified: Boolean!
     role: String
   }
@@ -45,6 +46,7 @@ const typeDefs =  gql `
   }
 
   type Mutation {
+    updateBio(about:String!):MutationResponse!
     updatePassword(oldPassword:String!,password:String!): MutationResponse!
   }
   

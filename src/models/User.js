@@ -27,6 +27,11 @@ const user = new userSchema({
 		type: String,
 		required: true,
 	},
+	about: {
+		type: String,
+		default: null,
+		text: true,
+	},
 	social: {
 		facebook: {
 			type: String,
