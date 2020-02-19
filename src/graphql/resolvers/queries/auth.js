@@ -34,7 +34,7 @@ export default {
 			let user = await User.findById({_id:userId});
 			if (user.verified == true) return responseFinal('404','You are Already verified.');
 			const message = `Account Confirmation OTP: ${user.otp}`;
-			let result = await sendEmail('<Website Name> - Account Confirmation',user.email,message);
+			let result = await sendEmail('Website Name - Account Confirmation',user.email,message);
 			if (!result) return responseFinal('404','Error sending mail');
 			return responseFinal('200','OTP resent successfully');
 		} catch (error) {
@@ -55,8 +55,8 @@ export default {
 			let data = {userId:user._id,resetKey};
 			let result = await new ResetPassword(data).save();
 			if (!result) return responseFinal('404','Some error try again');
-			const message = `Account Password Reset Link: <Your Website URL>/${resetKey}`;
-			let mail = await sendEmail('<Website Name> - Password Reset',user.email,message);
+			const message = `Account Password Reset Link: Your Website URL/${resetKey}`;
+			let mail = await sendEmail('Website Name - Password Reset',user.email,message);
 			if (!mail) return responseFinal('404','Error sending mail');
 			return responseFinal('200','Check your email to reset your password');
 		} catch (error) {

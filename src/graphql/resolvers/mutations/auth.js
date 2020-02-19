@@ -35,8 +35,8 @@ export default {
 			let otp = generateOTP();
 			let hash = await bcrypt.hash(password,10);
 			let user = await new User({...args,password:hash,otp, email:email.toLowerCase()}).save();
-			const message = `Visit <Your Website URL>/${user._id}\n` + `Account Confirmation OTP: ${otp}`;
-			let result = await sendEmail('SIESGST arena - Account Confirmation',email,message);
+			const message = `Visit Your Website URL/${user._id}\n` + `Account Confirmation OTP: ${otp}`;
+			let result = await sendEmail('Your Website - Account Confirmation',email,message);
 			if (!result) responseFinal('404','Error sending mail');
 			return responseFinal('200','New Account Created Successfully');
 		} catch (error) {

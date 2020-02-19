@@ -10,9 +10,10 @@ import jwtAuth from './middlewear/jwtAuth';
 import { ApolloServer } from 'apollo-server-express';
 import index from './graphql/schema/index';
 import Auth from './graphql/schema/Auth';
+import User from './graphql/schema/User';
 import Blog from './graphql/schema/Blog';
 import Comment from './graphql/schema/Comment';
-import User from './graphql/schema/User';
+import Main from './graphql/schema/Main';
 import graphqlResolver from './graphql/resolvers/index';
 import Debug from 'debug';
 const debug = Debug('API:app');
@@ -39,7 +40,7 @@ initRoutes(app);
 
 // Configuring typeDefs & resolvers
 const graphql = new ApolloServer({
-	typeDefs: [index,Auth,Blog,Comment,User],
+	typeDefs: [index,Auth,User,Blog,Comment,Main],
 	resolvers: graphqlResolver,
 	context: async (req) => ({
 		data: await jwtAuth(req)
