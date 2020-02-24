@@ -50,11 +50,6 @@ npm run lint -s
 npm run fix -s
 ```
 
-### Nodejs Packages
-[Express](https://expressjs.com) - Node.js Web Framework<br/>
-[Nodemailer](http://npmjs.com/package/nodemailer) - Sending Emails<br/>
-[Raven](https://www.npmjs.com/package/raven) - Sentry Error Monitoring<br/>
-
 ## Issues
 
 Issues are managed via GitHub Issues [here](https://github.com/Swap76/Apollo-GraphQL-Mongo-Boilerplate/issues).
@@ -65,4 +60,4 @@ Issues are managed via GitHub Issues [here](https://github.com/Swap76/Apollo-Gra
 
 ## License
 
-This project is licensed under the Apache License. See the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the Apache License. See the [LICENSE.md](https://github.com/Swap76/Apollo-GraphQL-Mongo-Boilerplate/blob/master/LICENSE) file for details.
