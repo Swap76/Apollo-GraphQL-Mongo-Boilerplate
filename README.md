@@ -16,6 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 Following are the softwares requried to get arena up and running.
 * [Node.js](https://nodejs.org) - Chrome's V8 Javascript Engine
 * [MongoDB](https://mongodb.org) - NoSQL Database
+* [Redis](https://redis.io/) - Redis Cache
 
 ### Installing
 
