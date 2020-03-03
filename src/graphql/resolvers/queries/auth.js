@@ -1,6 +1,6 @@
 import User from '../../../models/User';
+import setTokens from '../../../utils/set-jwt-tokens';
 import ResetPassword from '../../../models/ResetPassword';
-import jwt from 'jsonwebtoken';
 import checkInput from '../../../utils/joiValidate';
 import {checkForLogin, checkForExistinguserWithId, checkForExistinguserWithMail} from '../../../utils/checkForAuth';
 import { sendEmail } from '../../../utils/mail';
@@ -10,17 +10,18 @@ import formatter from '../../../utils/winstonFormatter';
 
 export default {
 	// Login
-	login: async (parent, args) => {
+	login: async (parent, args, {res}) => {
 		let { email, password } = args;
 		const resultfromJoi = checkInput(['email','password'],args);
 		if(resultfromJoi != true) return resultfromJoi;
 		const checked = await checkForLogin(email,password);
 		if (!checked.success) return checked;
 		log.info(`user:${formatter(checked.userId)},action:login`);
-		const token = jwt.sign({userId:checked.userId},process.env.JWT_SECRET,{
-			expiresIn: '12h'
-		});
-		return { userId: checked.userId, token, ...responseFinal('200','Sucessfully Logged In')};
+		const tokens = setTokens(checked.userId);
+		const cookies = tokenCookies(tokens);
+		res.cookie(...cookies.access);
+		res.cookie(...cookies.refresh);
+		return { userId: checked.userId, ...tokens, ...responseFinal('200','Sucessfully Logged In')};
 	},
 
 	// Resend Otp
@@ -65,3 +66,16 @@ export default {
 	},
   
 };
+
+function tokenCookies({ accessToken, refreshToken }) {
+	const cookieOptions = {
+	  httpOnly: true
+	  // secure: true, //for HTTPS only
+	  // domain: "your-website.com",
+	  // SameSite: None
+	};
+	return {
+	  access: ['access', accessToken, cookieOptions],
+	  refresh: ['refresh', refreshToken, cookieOptions]
+	};
+}

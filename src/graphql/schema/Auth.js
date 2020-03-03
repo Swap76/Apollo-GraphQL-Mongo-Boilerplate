@@ -4,7 +4,8 @@ const typeDefs =  gql `
 
 	type jwtToken {
 		userId: ID
-		token: String
+		accessToken: String
+		refreshToken: String
 		code: String!
 		success: Boolean!
 		message: String!

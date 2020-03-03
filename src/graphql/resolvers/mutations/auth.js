@@ -11,12 +11,13 @@ import ResetPassword from '../../../models/ResetPassword';
 
 export default {
 	// Logout
-	logout: async (parent, args, context) => {
-		let {  isAuth , token } = context.data;
-		console.log(context);
-		if (!isAuth) return responseFinal('403','You are not Logged In');
+	logout: async (parent, args, {req}) => {
+		if (req.user == null) return responseFinal('403','You are not Logged In');
+		let userId = req.user.id;
 		try {
-			log.info(`user:${formatter(args.userId)},action:logout`);
+			log.info(`user:${formatter(userId)},action:logout`);
+			res.clearCookie('access');
+  			res.clearCookie('refresh');
 			return responseFinal('200','You are logged out.');
 		} catch (error) {
 			return responseFinal('404','Some Error try again.');

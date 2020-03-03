@@ -8,10 +8,10 @@ import { checkOwnerOfBlogOrSuperUser } from '../../../utils/checksForBlogs';
 export default {
 
 	// Create blog
-	createBlog : async (root, args, context) => {
+	createBlog : async (root, args, {req}) => {
 		let { title, content, tags } = args;
-		let userId = context.data.userId;
-		if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+		if (req.user == null) return responseFinal('403','You are not Authorized');
+		let userId = req.user.id;
 		try {
 			let todayTimeStamp = +new Date; // Unix timestamp in milliseconds
 			let oneDayTimeStamp = 1000 * 60 * 60 * 24; // Milliseconds in a day
