@@ -37,10 +37,10 @@ export default {
 	},
 
 	// Edit blog
-	editBlog : async (root, args, context) => {
+	editBlog : async (root, args, {req}) => {
 		let { _id, title, content, tags} = args;
-		let userId = context.data.userId;
-		if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+		if (req.user == null) return responseFinal('403','You are not Authorized');
+		let userId = req.user.id;
 		const data = { title, content, tags};
 		let owner = await checkOwnerOfBlogOrSuperUser(userId,_id);
 		if(owner != true ) return owner;
@@ -59,10 +59,10 @@ export default {
 	},
 
 	// Delete blog
-	deleteBlog : async (root, args, context) => {
+	deleteBlog : async (root, args, {req}) => {
 		let { _id } = args;
-		let userId = context.data.userId;
-		if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+		if (req.user == null) return responseFinal('403','You are not Authorized');
+		let userId = req.user.id;
 		let owner = await checkOwnerOfBlogOrSuperUser(userId,_id);
 		if(owner != true) return owner;
 		try {

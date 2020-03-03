@@ -7,10 +7,10 @@ import responseFinal from '../../../utils/sendResponse';
 
 export default {
 	// Write comment
-	writeComment : async (root, args, context) => {
+	writeComment : async (root, args, {req}) => {
 		const { postId, content } = args;
-		let userId = context.data.userId;
-		if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+		if (req.user == null) return responseFinal('403','You are not Authorized');
+		let userId = req.user.id;
 		try {
 			const data = {userId, postId, commentContent:content};
 			const resultfromJoi = checkInput(['userId','postId','commentContent'],data);
@@ -26,10 +26,10 @@ export default {
 	},
 
 	// Edit comment
-	editComment: async (root, args, context) => {
+	editComment: async (root, args, {req}) => {
 		const { _id, content} = args;
-		let userId = context.data.userId;
-		if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+		if (req.user == null) return responseFinal('403','You are not Authorized');
+		let userId = req.user.id;
 		try {
 			const data = {userId, commentContent:content};
 			const resultfromJoi = checkInput(['userId','commentContent'],data);
@@ -47,10 +47,10 @@ export default {
 	},
 
 	// Delete comment
-	deleteComment: async (root, args, context) => {
+	deleteComment: async (root, args, {req}) => {
 		const { _id } = args;
-		let userId = context.data.userId;
-		if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+		if (req.user == null) return responseFinal('403','You are not Authorized');
+		let userId = req.user.id;
 		try {
 			const ownerOrNot =  await checkOwnerOrSuperUserOfComment(userId,_id);
 			if ( ownerOrNot != true ) return ownerOrNot;

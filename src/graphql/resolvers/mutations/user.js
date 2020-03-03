@@ -5,15 +5,15 @@ import responseFinal from '../../../utils/sendResponse';
 
 export default {
 	// Update bio
-	updateBio: async (parent, args, context) => {
+	updateBio: async (parent, args, {req}) => {
 		let {about } = args;
 		let result;
 		const data = {about};
 		const resultFromJoi = checkInput(['about'],data);
 		if (resultFromJoi != true) return resultFromJoi;
 		try {
-			let _id = context.data.userId;
-			if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+			if (req.user == null) return responseFinal('403','You are not Authorized');
+			let _id = req.user.id;
 			result = await User.findOneAndUpdate({_id},{$set:data});
 		} catch (error) {       
 			return responseFinal('422',`${error.message}`);
@@ -24,14 +24,14 @@ export default {
 	},
 
 	// Update password
-	updatePassword: async (parent, args, context) => {
+	updatePassword: async (parent, args, {req}) => {
 		let { oldPassword, password } = args;
 		const data = { oldPassword, password };
 		const resultFromJoi = checkInput(['oldPassword','password'],data);
 		if (resultFromJoi != true) return resultFromJoi;
 		try {
-			let _id = context.data.userId;
-			if (!context.data.isAuth) return responseFinal('403','You are not Authorized');
+			if (req.user == null) return responseFinal('403','You are not Authorized');
+			let _id = req.user.id;
 			let user = await User.findById(_id);
 			if (user && oldPassword && password) {
 				let match = await bcrypt.compare(oldPassword, user.password);
