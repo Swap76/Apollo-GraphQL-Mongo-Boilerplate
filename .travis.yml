@@ -1,0 +1,20 @@
+language: node_js
+sudo: false
+node_js:
+  - "8.11.2"
+services:
+  - mongodb
+install:
+  - npm install
+before_script: 
+  - sudo redis-server /etc/redis/redis.conf --port 6380
+script:
+  - npm run test
+notifications:
+  email: false
+env:
+  global:
+    NODE_ENV=dev
+    DB_DEV_URI=mongodb://localhost/arena
+    REDIS_DEV_HOST=localhost
+    REDIS_DEV_PORT=6380
