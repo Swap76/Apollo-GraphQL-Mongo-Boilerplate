@@ -22,6 +22,7 @@ Our project has the following structure:
     * models
     * routes
     * utils
+  * test
 
   ### 1. Docs
   This contains all the markdown files for the documentation of the project, which is visualized on Docsify.
@@ -49,6 +50,9 @@ Our project has the following structure:
 
   ### 9. Utils
   This contains all the helper functions associated with other endpoints.
+  
+  ### 10. Tests
+  This contains basic setup for chai, mocha testing which can be integrated with Travis CI easily or any other CI
 
 ## Getting Started
 
@@ -60,6 +64,7 @@ These instructions will get you a copy of the project up and running o# Apollo G
 - GraphQL schema examples
 - JWT Authorization Middlewear
 - REST API Configuration
+- Tests using Chai & Mocha
 
 ## Getting Started
 
