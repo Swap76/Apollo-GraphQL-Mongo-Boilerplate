@@ -35,7 +35,7 @@
     "@babel/preset-env": "^7.10.2",
     "@babel/register": "^7.10.1",
     "@hapi/joi": "^15.1.0",
-    "apollo-server": "^2.14.2",
+    "apollo-server": "^2.25.3",
     "apollo-server-express": "^2.14.2",
     "babel-eslint": "^8.2.6",
     "bcrypt": "^5.0.0",
